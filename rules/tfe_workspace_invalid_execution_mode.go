@@ -18,7 +18,10 @@ type tfeWorkspaceInvalidExecutionModeRule struct {
 }
 
 func NewTfeWorkspaceInvalidExecutionModeRule() *tfeWorkspaceInvalidExecutionModeRule {
-	return &tfeWorkspaceInvalidExecutionModeRule{}
+	return &tfeWorkspaceInvalidExecutionModeRule{
+		resourceType: "tfe_workspace",
+		attributeName: "execution_mode",
+	}
 }
 
 func (r *tfeWorkspaceInvalidExecutionModeRule) Name() string {
