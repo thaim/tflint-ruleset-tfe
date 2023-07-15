@@ -10,34 +10,34 @@ import (
 
 var validExecutionModes = []string{"remote", "local", "agent"}
 
-type tfeWorkspaceInvalidExecutionMode struct {
+type tfeWorkspaceInvalidExecutionModeRule struct {
 	tflint.DefaultRule
 
 	resourceType string
 	attributeName string
 }
 
-func NewTfeWorkspaceInvalidExecutionMode() *tfeWorkspaceInvalidExecutionMode {
-	return &tfeWorkspaceInvalidExecutionMode{}
+func NewTfeWorkspaceInvalidExecutionModeRule() *tfeWorkspaceInvalidExecutionModeRule {
+	return &tfeWorkspaceInvalidExecutionModeRule{}
 }
 
-func (r *tfeWorkspaceInvalidExecutionMode) Name() string {
+func (r *tfeWorkspaceInvalidExecutionModeRule) Name() string {
 	return "tfe_workspace_invalid_execution_mode"
 }
 
-func (r *tfeWorkspaceInvalidExecutionMode) Enabled() bool {
+func (r *tfeWorkspaceInvalidExecutionModeRule) Enabled() bool {
 	return true
 }
 
-func (r *tfeWorkspaceInvalidExecutionMode) Severity() tflint.Severity {
+func (r *tfeWorkspaceInvalidExecutionModeRule) Severity() tflint.Severity {
 	return tflint.ERROR
 }
 
-func (r *tfeWorkspaceInvalidExecutionMode) Link() string {
+func (r *tfeWorkspaceInvalidExecutionModeRule) Link() string {
 	return ""
 }
 
-func (r *tfeWorkspaceInvalidExecutionMode) Check(runner tflint.Runner) error {
+func (r *tfeWorkspaceInvalidExecutionModeRule) Check(runner tflint.Runner) error {
 	resources, err := runner.GetResourceContent(r.resourceType, &hclext.BodySchema{
 		Attributes: []hclext.AttributeSchema{{Name: r.attributeName}},
 	}, nil)
