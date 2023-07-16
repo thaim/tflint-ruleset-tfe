@@ -6,6 +6,7 @@ import (
 	"golang.org/x/exp/slices"
 	"github.com/terraform-linters/tflint-plugin-sdk/hclext"
 	"github.com/terraform-linters/tflint-plugin-sdk/tflint"
+	"github.com/thaim/tflint-ruleset-tfe/project"
 )
 
 var validExecutionModes = []string{"remote", "local", "agent"}
@@ -37,7 +38,7 @@ func (r *tfeWorkspaceInvalidExecutionModeRule) Severity() tflint.Severity {
 }
 
 func (r *tfeWorkspaceInvalidExecutionModeRule) Link() string {
-	return ""
+	return project.ReferenceLink(r.Name())
 }
 
 func (r *tfeWorkspaceInvalidExecutionModeRule) Check(runner tflint.Runner) error {
